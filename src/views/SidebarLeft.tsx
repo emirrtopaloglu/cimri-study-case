@@ -37,7 +37,9 @@ export default function SidebarLeft(props: SidebarLeftProps) {
         type="brand"
         options={brands}
         products={
-          (search.length > 0 || price.length > 0 || selectedMerchants.length > 0) ? filteredProducts : products
+          search.length > 0 || price.length > 0 || selectedMerchants.length > 0
+            ? filteredProducts
+            : products
         }
         selectedFilters={selectedBrands}
         setSelectedFilters={setSelectedBrands}
@@ -47,7 +49,10 @@ export default function SidebarLeft(props: SidebarLeftProps) {
         type="merchant"
         options={merchants}
         products={
-          selectedBrands.length > 0 || price.length > 0
+          selectedBrands.length > 0 ||
+          price.length > 0 ||
+          search.length > 0 ||
+          selectedMerchants.length > 0
             ? filteredProducts
             : products
         }
