@@ -106,7 +106,7 @@ export default function Home({
       return (
         product.title.toLowerCase().includes(debouncedSearch.toLowerCase()) &&
         (selectedBrands.length
-          ? selectedBrands.every((brand) => brand.id == product.brand.id)
+          ? selectedBrands.some((brand) => brand.id == product.brand.id)
           : true) &&
         product.offers.some((offer) => {
           const merchantFilter =
