@@ -49,10 +49,7 @@ export default function SidebarLeft(props: SidebarLeftProps) {
         type="merchant"
         options={merchants}
         products={
-          selectedBrands.length > 0 ||
-          price.length > 0 ||
-          search.length > 0 ||
-          selectedMerchants.length > 0
+          selectedBrands.length > 0 || price.length > 0 || search.length > 0
             ? filteredProducts
             : products
         }

@@ -109,9 +109,15 @@ export default function Home({
           ? selectedBrands.some((brand) => brand.id == product.brand.id)
           : true) &&
         product.offers.some((offer) => {
+          // ?? sidebardaki ürün sayısı gösterme kısmında bana garip gelen bir yer var
+          // ?? örneğin Array.some() kullandığımda trendyol seçili değil ve 0 ürün var trendyol (0) yazıyor
+          // ?? trendyolu seçtiğimde onun ürünlerini de dahil ediyor ver trendyol (16) gibi oluyor
+          // ?? Array.every() kullanırsam ve birden fazla merchant seçersem her ikisinin de olduğu ürünleri gösteriyor
+          // ?? üçüncü bir merchant seçince haliyle 0 oluyor bunu ilk olarak every ile yapmıştım
+          // ?? sayıların gösterimi biraz sıkıntılı gibi geldi ama filtreleme bu şekilde daha mantıklı geldi
           const merchantFilter =
             selectedMerchants.length > 0
-              ? selectedMerchants.every((merchant) =>
+              ? selectedMerchants.some((merchant) =>
                   product.offers.find(
                     (offer) => offer.merchant.id == merchant.id
                   )
