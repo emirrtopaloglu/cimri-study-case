@@ -21,20 +21,23 @@ const StyledProductList = styled.div`
 
   & > div {
     width: calc(100% / 3 - 20px);
-    margin-right: 20px;
+    margin-left: 20px;
     margin-bottom: 20px;
   }
 
   @media (max-width: 1024px) {
     & > div {
       width: calc(100% / 2 - 20px);
+      &:nth-child(2n + 1) {
+        margin-left: 0;
+      }
     }
   }
 
   @media (max-width: 768px) {
     & > div {
       width: 100%;
-      margin-right: 0;
+      margin-left: 0;
     }
   }
 `;
@@ -61,6 +64,14 @@ const StyledFilterContainer = styled.div`
     }
   } */
 `;
+
+const StyledHeaderText = styled.div`
+  padding: 20px 0px 10px 20px;
+
+  @media screen and (max-width: 1024px) {
+    padding-left: 0;
+  }
+`
 
 export default function Home({
   brands,
@@ -173,11 +184,11 @@ export default function Home({
               </Badge>
             ))}
           </StyledFilterContainer>
-          <div style={{ paddingTop: 15, paddingBottom: 15 }}>
+          <StyledHeaderText>
             {filteredProducts.length > 0
               ? `${filteredProducts.length} ürün bulundu`
               : null}
-          </div>
+          </StyledHeaderText>
           {filteredProducts.length > 0 ? (
             <StyledProductList>
               {filteredProducts
