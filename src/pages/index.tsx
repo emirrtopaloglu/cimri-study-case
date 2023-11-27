@@ -221,7 +221,7 @@ export default function Home({
             <div
               style={{
                 textAlign: "center",
-                padding: "0 20px"
+                padding: "0 20px 20px"
               }}
             >
               <Button
