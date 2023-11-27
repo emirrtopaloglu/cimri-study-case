@@ -4,6 +4,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
+  output: "export",
   images: {
     domains: ["cdn.cimri.io"]
   }
