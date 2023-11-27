@@ -43,7 +43,8 @@ const StyledProductList = styled.div`
 `;
 
 const StyledFilterContainer = styled.div`
-  padding-top: 20px;
+  padding-left: 20px;
+  /* padding-top: 20px; */
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -53,25 +54,30 @@ const StyledFilterContainer = styled.div`
     display: none;
   }
 
+  & > * {
+    margin-bottom: 10px;
+  }
+
   // ?? mobilde scroll kaldırmak için (optional)
-  /* @media (max-width: 768px) {
-    padding: 0;
+  @media (max-width: 768px) {
+    padding-left: 0;
+    /* padding: 0;
     flex-wrap: wrap;
     overflow: auto;
 
     & > * {
       margin-bottom: 10px;
-    }
-  } */
+    } */
+  }
 `;
 
 const StyledHeaderText = styled.div`
-  padding: 20px 0px 10px 20px;
+  padding-left: 20px;
 
   @media screen and (max-width: 1024px) {
     padding-left: 0;
   }
-`
+`;
 
 export default function Home({
   brands,
@@ -151,44 +157,46 @@ export default function Home({
           />
         </Sidebar>
         <Page>
-          <StyledFilterContainer>
-            {price.length > 0 && (
-              <Badge style={{ marginRight: 10 }} onClick={() => setPrice([])}>
-                {`${price[0]} - ${price[1]} TL aralığı`}
-              </Badge>
-            )}
-            {selectedBrands.map((option: Option) => (
-              <Badge
-                style={{ marginRight: 10 }}
-                key={option.id}
-                onClick={() =>
-                  setSelectedBrands((prev) =>
-                    prev.filter((brand) => brand.id != option.id)
-                  )
-                }
-              >
-                {option.name}
-              </Badge>
-            ))}
-            {selectedMerchants.map((option: Option) => (
-              <Badge
-                style={{ marginRight: 10 }}
-                key={option.id}
-                onClick={() =>
-                  setSelectedMerchants((prev) =>
-                    prev.filter((merchant) => merchant.id != option.id)
-                  )
-                }
-              >
-                {option.name}
-              </Badge>
-            ))}
-          </StyledFilterContainer>
-          <StyledHeaderText>
-            {filteredProducts.length > 0
-              ? `${filteredProducts.length} ürün bulundu`
-              : null}
-          </StyledHeaderText>
+          <div style={{ paddingTop: 15, paddingBottom: 15 }}>
+            <StyledFilterContainer>
+              {price.length > 0 && (
+                <Badge style={{ marginRight: 10 }} onClick={() => setPrice([])}>
+                  {`${price[0]} - ${price[1]} TL aralığı`}
+                </Badge>
+              )}
+              {selectedBrands.map((option: Option) => (
+                <Badge
+                  style={{ marginRight: 10 }}
+                  key={option.id}
+                  onClick={() =>
+                    setSelectedBrands((prev) =>
+                      prev.filter((brand) => brand.id != option.id)
+                    )
+                  }
+                >
+                  {option.name}
+                </Badge>
+              ))}
+              {selectedMerchants.map((option: Option) => (
+                <Badge
+                  style={{ marginRight: 10 }}
+                  key={option.id}
+                  onClick={() =>
+                    setSelectedMerchants((prev) =>
+                      prev.filter((merchant) => merchant.id != option.id)
+                    )
+                  }
+                >
+                  {option.name}
+                </Badge>
+              ))}
+            </StyledFilterContainer>
+            <StyledHeaderText>
+              {filteredProducts.length > 0
+                ? `${filteredProducts.length} ürün bulundu`
+                : null}
+            </StyledHeaderText>
+          </div>
           {filteredProducts.length > 0 ? (
             <StyledProductList>
               {filteredProducts
